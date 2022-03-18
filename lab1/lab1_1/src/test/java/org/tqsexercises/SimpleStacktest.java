@@ -39,7 +39,7 @@ public class SimpleStacktest {
         }
 
         assertEquals(false, stack.isEmpty());
-        assertEquals(N,stack.isEmpty());
+        assertEquals(N,stack.size());
 
     }
 

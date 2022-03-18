@@ -1,31 +1,31 @@
 package org.tqsexercises;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public abstract class Stack<T> {
 
-    private ArrayList<T> stack;
-    protected int limit = -1;
+    protected ArrayList<T> stack;
 
+    public Stack(){
+        this.stack = new ArrayList<T>();
+    }
 
-    public void push(T object){
-
-        if ((stack.size() >= limit) && (limit > 0)){
-            throw new IllegalStateException();
-        }
-
-        this.stack.add(object);
-    };
+    public abstract void push(T object);
 
     public void remove(T object){
         this.stack.remove(object);
     };
 
-    public T peek(){
-        T object;
-        int index = this.stack.size() - 1;
-        object = this.stack.get(index);
-        return object;
+    public T peek() throws NoSuchElementException {
+        if (stack.isEmpty()) {
+            throw new NoSuchElementException();
+        } else {
+            T object;
+            int index = this.stack.size() - 1;
+            object = this.stack.get(index);
+            return object;
+        }
     }
 
     public int size(){
